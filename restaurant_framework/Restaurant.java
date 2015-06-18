@@ -36,12 +36,52 @@ public class Restaurant{
         double iceCreamPrice = 2.00;
         double sodaPrice = 1.50;
 
-        while(true){ /* FIX WHILE CONDITION */
+        while(allowance >= 0){ /* FIX WHILE CONDITION */
             printAllowance(allowance);
             printMenu();
 
             input = scan.nextInt();
-            /**
+		if (input == 1){
+			if(allowance < pizzaPrice){
+				printFailure("pizza");
+			}
+			else{
+				allowance = allowance - pizzaPrice;
+			}
+		}
+	    	else if (input == 2){
+			if(allowance < iceCreamPrice) {
+				printFailure("ice cream");
+			}
+			else{ 
+				allowance = allowance - iceCreamPrice;
+			}
+		}
+		else if (input == 3){
+			if(allowance < sodaPrice) {
+				printFailure("soda");
+				}
+			else{
+				allowance = allowance - sodaPrice;
+			}
+		}
+		else if (input == 7){
+			pizzaPrice = pizzaPrice + 1;
+			iceCreamPrice = iceCreamPrice + 1;
+			sodaPrice = sodaPrice + 1;
+			System.out.println("Inflation has happened");
+			}
+		else if (input == 6){
+			pizzaPrice = pizzaPrice - 2;
+			iceCreamPrice = iceCreamPrice - 2;
+			sodaPrice = sodaPrice - 2;
+			System.out.println("The fastfood market crashed!");
+			}
+		else{
+			System.out.println("Goodbye!");
+			break;
+		}
+	    /**
              *
              * ENTER YOUR CODE HERE
              *
@@ -51,7 +91,7 @@ public class Restaurant{
              * printFailure("Pizza"); -- prints "You do not have enough money remaining to purchase Pizza"
              *
              */
-        }
+	}
+}
 
-    }
 }

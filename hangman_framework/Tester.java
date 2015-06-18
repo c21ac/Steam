@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Tester{
 
     public static void main(String [] args){
+        System.out.println("Made by Alec");
         System.out.println("Enter the word to guess");
         Scanner scan = new Scanner(System.in);
         String inputWord = scan.nextLine();
@@ -13,14 +14,38 @@ public class Tester{
         String input;
 
         boolean correct = false;
+        
+        while (board.getLives()>0){ //board.getLives() > 0 || board.allLettersFilled()){
 
-        while (true){ /* FIX THIS WHILE LOOP CONDITION */
+			if(board.allLettersFilled()){
+				break;
 
-            /**
-             *
-             * ENTER YOUR CODE HERE
-             *
-             */
+			}
+        	int lives = board.getLives();
+
+			if (lives == 6) {
+                System.out.println(Hangman.base());
+            }
+            
+            if (lives == 5) {
+            	System.out.println(Hangman.strikeOne());
+            }
+
+            if (lives == 4) {
+            	System.out.println(Hangman.strikeTwo());
+            }
+            
+            if (lives == 3) {
+            	System.out.println(Hangman.strikeThree());
+            }
+
+            if (lives == 2) {
+            	System.out.println(Hangman.strikeFour());
+            }
+            
+            if (lives == 1) {
+            	System.out.println(Hangman.strikeFive());
+            }
 
             if(!board.getIncorrectGuesses().equals("\n")){
                 System.out.println("Letters Guessed: " + board.getIncorrectGuesses());
@@ -34,17 +59,22 @@ public class Tester{
 
             correct = board.setMove(input);
 
+            board.updateNumberOfLives(correct);
+
             if(!correct){
                 lettersGuessed += input + " ";
             }
         }
-
-        if(!correct){
-            System.out.println(Hangman.strikeSix());
+	
+        if(correct==false){
+            
+	    System.out.println(Hangman.strikeSix());
+	    System.out.println("HE DIED, YOU MURDERED HIM!");
         }
         else{
             System.out.println(board.toString());
-            System.out.println("VICTORY!");
+            System.out.println("YOU SAVED HIM!");
+
         }
        
 
