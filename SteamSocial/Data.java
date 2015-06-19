@@ -1,12 +1,17 @@
-public class data{
+public class Data{
 	String firstName;
 	String lastName;
 	String number;
 	String address;
 	int age;
-	data [] relations;
-	public data(){
-		relations = new data[10];
+	Data [] relations;
+	public Data(String first_name, String last_name, int a_ge){
+		firstName = first_name;
+		lastName = last_name;
+		age = a_ge;
+	}
+	public Data(){
+		relations = new Data[10];
 	}
 	public String getFirstName(){
 		return firstName;
@@ -38,10 +43,10 @@ public class data{
 	public void setage(int a_ge){
 		age = a_ge;
 	}
-	public data [] getRelations(){
+	public Data [] getRelations(){
 		return relations;
 	}
-	public void setRelations(data interacting){
+	public void setRelations(Data[] interacting){
 		relations = interacting;
 	}
 }
